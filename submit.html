@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit a Link — LinksDM</title>
+<meta name="description" content="Suggest a tool or site to add to LinksDM.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand-block">
+        <img src="assets/logo.png" alt="LinksDM" class="site-logo">
+        <p class="tagline">A curated collection of tools, sites, and links worth keeping.</p>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="new.html" class="nav-link">New</a>
+        <a href="submit.html" class="nav-link active">Submit</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="page-main">
+  <div class="submit-wrap">
+    <h1 class="page-title">Submit a link</h1>
+    <p class="page-subtitle">Know a tool or site worth adding? Send it over and I'll take a look.</p>
+
+    <form name="submit-link" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="submit-form" action="thank-you.html">
+      <input type="hidden" name="form-name" value="submit-link">
+      <p class="hp-field">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <label class="form-field">
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Your name" required>
+      </label>
+
+      <label class="form-field">
+        <span>Link</span>
+        <input type="url" name="link" placeholder="https://example.com" required>
+      </label>
+
+      <label class="form-field">
+        <span>Category</span>
+        <select name="category" required>
+          <option value="" disabled selected>Choose a category</option>
+          <option value="AI Tools">AI Tools</option>
+          <option value="Design Inspiration">Design Inspiration</option>
+          <option value="AI Design">AI Design</option>
+          <option value="Website Platforms">Website Platforms</option>
+          <option value="Fonts">Fonts</option>
+          <option value="SEO Analytics">SEO Analytics</option>
+          <option value="Hosting">Hosting</option>
+          <option value="Icons & Stock Photos">Icons &amp; Stock Photos</option>
+          <option value="Domains">Domains</option>
+          <option value="Learning">Learning</option>
+          <option value="Productivity & Business">Productivity &amp; Business</option>
+          <option value="Wallpapers">Wallpapers</option>
+          <option value="AI Video Generation">AI Video Generation</option>
+          <option value="Curated Physical Goods">Curated Physical Goods</option>
+        </select>
+      </label>
+
+      <label class="form-field">
+        <span>Description</span>
+        <textarea name="description" rows="3" placeholder="What is it, and why is it worth adding?"></textarea>
+      </label>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">LinksDM — a digital bookmarking site.</p>
+    <nav class="footer-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="new.html" class="nav-link">New Links</a>
+      <a href="submit.html" class="nav-link active">Submit a Link</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

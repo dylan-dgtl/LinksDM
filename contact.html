@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — LinksDM</title>
+<meta name="description" content="Get in touch about LinksDM.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand-block">
+        <img src="assets/logo.png" alt="LinksDM" class="site-logo">
+        <p class="tagline">A curated collection of tools, sites, and links worth keeping.</p>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="new.html" class="nav-link">New</a>
+        <a href="submit.html" class="nav-link">Submit</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="page-main">
+  <div class="submit-wrap">
+    <h1 class="page-title">Contact us</h1>
+    <p class="page-subtitle">Questions, feedback, or just want to say hi? Send a message and I'll get back to you.</p>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="submit-form" action="message-sent.html">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp-field">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <label class="form-field">
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Your name" required>
+      </label>
+
+      <label class="form-field">
+        <span>Email</span>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+
+      <label class="form-field">
+        <span>Message</span>
+        <textarea name="message" rows="4" placeholder="What's on your mind?" required></textarea>
+      </label>
+
+      <button type="submit" class="submit-btn">Send a message</button>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">LinksDM — a digital bookmarking site.</p>
+    <nav class="footer-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="new.html" class="nav-link">New Links</a>
+      <a href="submit.html" class="nav-link">Submit a Link</a>
+      <a href="contact.html" class="nav-link active">Contact Us</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

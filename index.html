@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Links DM - A curated directory of links</title>
+<meta name="description" content="A personal, curated collection of tools, sites, and links worth keeping.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand-block">
+        <img src="assets/logo.png" alt="LinksDM" class="site-logo">
+        <p class="tagline">A curated collection of tools, sites, and links worth keeping.</p>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="new.html" class="nav-link">New</a>
+        <a href="submit.html" class="nav-link">Submit</a>
+      </nav>
+    </div>
+    <div class="header-middle-row">
+      <div class="search-wrap">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="searchInput" type="text" placeholder="Search links..." autocomplete="off">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero-bar">
+  <div class="hero-row">
+    <img src="assets/mascot.png" alt="LinksDM mascot" class="hero-mascot">
+    <div class="hero-text">
+      <h3>Your personal guide to the web's best tools.</h3>
+      <p>Every tool and resource designers and developers actually use, curated and searchable in one place, so you're never digging through a dozen tabs and folders to find it again.</p>
+    </div>
+  </div>
+</section>
+
+<main class="page-main">
+  <p class="status-feedback" id="statusFeedback" hidden></p>
+  <section class="latest-section" id="latestSection">
+    <h3 class="col-heading">Latest</h3>
+    <div class="latest-strip-wrap">
+      <button type="button" class="latest-arrow latest-arrow-prev" id="latestPrev" aria-label="Scroll left">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+      </button>
+      <div class="latest-strip" id="latestStrip"></div>
+      <button type="button" class="latest-arrow latest-arrow-next" id="latestNext" aria-label="Scroll right">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </section>
+  <nav class="category-nav" id="categoryNav" aria-label="Browse by category"></nav>
+  <div class="columns-grid" id="columnsGrid"></div>
+  <p class="empty-state" id="emptyState" hidden>No links match your search.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">LinksDM — a digital bookmarking site.</p>
+    <nav class="footer-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="new.html" class="nav-link">New Links</a>
+      <a href="submit.html" class="nav-link">Submit a Link</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
