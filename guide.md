@@ -9,6 +9,7 @@ linksdm/
 ├── index.html        → home page structure
 ├── category.html     → "Browse by category" page — the full list for one category
 ├── new.html          → "New" page — everything added in the last 30 days
+├── ai-prompts.html   → "AI Prompts" page — free Basic prompts + Detailed upsell buttons
 ├── submit.html       → "Submit" page — public form for link suggestions
 ├── thank-you.html    → confirmation page shown after a link submission
 ├── contact.html      → "Contact Us" page — public form to message you directly
@@ -24,6 +25,8 @@ It currently holds 69 links across 14 categories (AI Tools, Design Inspiration, 
 Each category is shown as its own column (like Link Lowdown), with a "Latest" column first showing your most recently added links across every category. Columns longer than 8 links show a **See all →** link to expand the rest, so the page stays scannable.
 
 Below "Latest" is a row of category pills. "All" just takes you back to this home page (which already shows every category). Clicking any other pill opens `category.html`, which shows that category's complete, alphabetized list on its own page (no 8-link cap there). The pill order is controlled by `CATEGORY_ORDER` near the top of `script.js` — a brand new category you add in `data.js` still shows up in the nav automatically (it's just appended at the end until you add it to that list too).
+
+At the bottom of the home page, and again on its own dedicated `ai-prompts.html` page (linked from the header nav), is an **AI Prompts** section: cards with a category tag, title, and short description, each with two buttons. **Basic** expands the card in place to reveal a free, ready-to-use prompt with a "Copy prompt" button. **Detailed** currently links to `ai-prompts.html` on the home page card row, and to a `#` placeholder on the dedicated page — swap those `href`s to your Shopify product/collection URL once it's live. Prompt cards aren't stored in `data.js`; each one is its own block of HTML directly in `index.html` / `ai-prompts.html` (look for `<div class="prompt-card">`), so to add, edit, or remove a prompt, copy/edit/delete that whole block in both places to keep the home page preview and the full page in sync. The toggle/copy behavior lives in `script.js` under "AI PROMPTS" and runs automatically on any page with a `#promptGrid` element — you shouldn't need to touch it.
 
 ## 1. Preview it right now
 

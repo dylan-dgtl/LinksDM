@@ -584,3 +584,34 @@ if (document.getElementById("categoryContent")) {
 
   updateArrowState();
 })();
+
+// ============================================================
+// AI PROMPTS — Basic (expand) / Detailed (link out) + copy button
+// Runs on any page with a #promptGrid (ai-prompts.html, index.html).
+// ============================================================
+(function setupPromptCards() {
+  const grid = document.getElementById("promptGrid");
+  if (!grid) return;
+
+  grid.querySelectorAll(".prompt-btn-basic").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const panel = document.getElementById(btn.dataset.target);
+      if (!panel) return;
+      const isOpen = panel.classList.toggle("is-open");
+      btn.classList.toggle("is-open", isOpen);
+      btn.textContent = isOpen ? "Hide" : "Basic";
+    });
+  });
+
+  grid.querySelectorAll(".prompt-copy-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const panel = document.getElementById(btn.dataset.copyTarget);
+      const textEl = panel && panel.querySelector(".prompt-text");
+      if (!textEl) return;
+      navigator.clipboard?.writeText(textEl.textContent).catch(() => {});
+      const original = btn.innerHTML;
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.innerHTML = original; }, 1500);
+    });
+  });
+})();
