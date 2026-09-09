@@ -120,6 +120,14 @@ const LINKS = [
 
   // ---------- Design Inspiration ----------
   {
+    title: "Apple Design Awards",
+    url: "https://developer.apple.com/design/awards/",
+    description: "Apple's yearly showcase of standout app and game design across six award categories.",
+    category: "Design Inspiration",
+    dateAdded: "2026-09-09",
+    logo: ""
+  },
+  {
     title: "Awwwards",
     url: "https://www.awwwards.com",
     description: "Showcase of award-winning website design and web trends.",
@@ -152,6 +160,14 @@ const LINKS = [
     logo: ""
   },
   {
+    title: "Logosystem",
+    url: "https://logosystem.co/",
+    description: "Curated library of logos, wordmarks, and animated marks for branding inspiration.",
+    category: "Design Inspiration",
+    dateAdded: "2026-09-09",
+    logo: ""
+  },
+  {
     title: "Mobbin",
     url: "https://mobbin.com",
     description: "Searchable library of real mobile and web app UI screens.",
@@ -173,6 +189,14 @@ const LINKS = [
     description: "AI-powered visual search engine for finding images with a similar look and feel.",
     category: "Design Inspiration",
     dateAdded: "2026-08-23",
+    logo: ""
+  },
+  {
+    title: "Shopify Editions",
+    url: "https://www.shopify.com/editions",
+    description: "Shopify's biannual showcase of major new commerce features and platform updates.",
+    category: "Design Inspiration",
+    dateAdded: "2026-09-09",
     logo: ""
   },
 
@@ -412,6 +436,14 @@ const LINKS = [
     logo: ""
   },
   {
+    title: "Iconify",
+    url: "https://icon-sets.iconify.design/",
+    description: "Search engine for 350,000+ open-source icons across 220+ icon sets.",
+    category: "Icons & Stock Photos",
+    dateAdded: "2026-09-09",
+    logo: ""
+  },
+  {
     title: "Iconsax",
     url: "https://iconsax.io/",
     description: "Icon library with 50,000+ icons in multiple styles and framework plugins.",
@@ -426,6 +458,14 @@ const LINKS = [
     category: "Icons & Stock Photos",
     dateAdded: "2026-09-01",
     logo: "assets/favicons/itshover.png"
+  },
+  {
+    title: "Lucide",
+    url: "https://lucide.dev/",
+    description: "Open-source icon toolkit with a clean, consistent style for web and app UI.",
+    category: "Icons & Stock Photos",
+    dateAdded: "2026-09-09",
+    logo: ""
   },
   {
     title: "Morphicons",

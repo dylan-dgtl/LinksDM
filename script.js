@@ -50,6 +50,24 @@ function getDomain(url) {
   }
 }
 
+// Tags every outbound link with ?utm_source=linksdm.com (or &utm_source=...
+// if the URL already has query params) so it shows up in the destination
+// site's analytics as traffic that came from LinksDM — same idea as
+// Link Lowdown does with linklowdown.com. Only appends if the URL doesn't
+// already carry a utm_source (never overwrites one a link was submitted
+// with), and leaves the URL untouched if it isn't a valid absolute URL.
+function withSource(url) {
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.has("utm_source")) {
+      u.searchParams.set("utm_source", "linksdm.com");
+    }
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
+
 // Called via onerror when a favicon/logo image fails to load — swaps
 // the broken <img> out for the plain placeholder icon. Defined as a
 // named global function (rather than inlining the SVG markup into the
@@ -106,7 +124,7 @@ function rowHtml(link, isExtra) {
        data-title="${escapeHtml((link.title || "").toLowerCase())}"
        data-desc="${escapeHtml((link.description || "").toLowerCase())}">
       <a class="row-link"
-         href="${escapeHtml(link.url)}"
+         href="${escapeHtml(withSource(link.url))}"
          target="_blank"
          rel="noopener noreferrer">
         <span class="row-logo">${logo}</span>
@@ -145,7 +163,7 @@ function latestCardHtml(link) {
 
   return `
     <a class="latest-card"
-       href="${escapeHtml(link.url)}"
+       href="${escapeHtml(withSource(link.url))}"
        target="_blank"
        rel="noopener noreferrer">
       <span class="row-logo">${logo}</span>
