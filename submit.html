@@ -59,6 +59,11 @@
       </label>
 
       <label class="form-field">
+        <span>Email</span>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+
+      <label class="form-field">
         <span>Link</span>
         <input type="url" name="link" placeholder="https://example.com" required>
       </label>
@@ -68,6 +73,7 @@
         <select name="category" required>
           <option value="" disabled selected>Choose a category</option>
           <option value="AI Tools">AI Tools</option>
+          <option value="AI Prompt">AI Prompt</option>
           <option value="Design Inspiration">Design Inspiration</option>
           <option value="AI Design">AI Design</option>
           <option value="Website Platforms">Website Platforms</option>
@@ -89,10 +95,33 @@
         <textarea name="description" rows="3" placeholder="What is it, and why is it worth adding?"></textarea>
       </label>
 
+      <p class="consent-blurb">By clicking submit, you agree to LinksDM's <a href="#">Privacy Policy</a>. We only use your email to follow up on this submission and never sell or share your information.</p>
+
+      <label class="form-field checkbox-field">
+        <input type="checkbox" name="marketing-consent" value="yes">
+        <span>I'd also like to receive occasional emails from LinksDM about new prompts, tools, and site updates. I can unsubscribe at any time.</span>
+      </label>
+
       <button type="submit" class="submit-btn">Submit</button>
     </form>
   </div>
 </main>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var category = params.get('category');
+  if (!category) return;
+  var select = document.querySelector('select[name="category"]');
+  if (!select) return;
+  for (var i = 0; i < select.options.length; i++) {
+    if (select.options[i].value === category) {
+      select.value = category;
+      break;
+    }
+  }
+})();
+</script>
 
 <footer class="site-footer">
   <div class="footer-inner">
