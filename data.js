@@ -662,6 +662,116 @@ const LINKS = [
     category: "AI Video Generation",
     dateAdded: "2026-08-31",
     logo: "assets/favicons/runway.png"
+  },
+
+  // ---- Marketing (grouped into subcategories on category.html) ----
+  {
+    title: "Buffer",
+    url: "https://buffer.com",
+    description: "Schedule and publish social media posts across multiple platforms from one calendar.",
+    category: "Marketing",
+    subcategory: "Social Media Management",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Hootsuite",
+    url: "https://www.hootsuite.com",
+    description: "All-in-one social media scheduling, inbox, and analytics dashboard.",
+    category: "Marketing",
+    subcategory: "Social Media Management",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Mailchimp",
+    url: "https://mailchimp.com",
+    description: "Email marketing platform with a campaign builder, automation, and audience management.",
+    category: "Marketing",
+    subcategory: "Email Marketing",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Klaviyo",
+    url: "https://www.klaviyo.com",
+    description: "Email and SMS marketing built for ecommerce brands.",
+    category: "Marketing",
+    subcategory: "Email Marketing",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Jasper",
+    url: "https://www.jasper.ai",
+    description: "AI writing assistant trained on your brand voice for marketing copy.",
+    category: "Marketing",
+    subcategory: "AI Copywriting",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Copy.ai",
+    url: "https://www.copy.ai",
+    description: "Template-driven AI copywriting for ads, emails, and social captions.",
+    category: "Marketing",
+    subcategory: "AI Copywriting",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Unbounce",
+    url: "https://unbounce.com",
+    description: "Landing page builder with built-in A/B testing for conversion rate optimization.",
+    category: "Marketing",
+    subcategory: "Landing Pages",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "Instapage",
+    url: "https://instapage.com",
+    description: "Landing page platform with AI-assisted split testing and personalization.",
+    category: "Marketing",
+    subcategory: "Landing Pages",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "ClickUp",
+    url: "https://clickup.com",
+    description: "Customizable workspace for planning, tracking, and reporting on marketing campaigns.",
+    category: "Marketing",
+    subcategory: "Marketing Project Management",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "monday.com",
+    url: "https://monday.com",
+    description: "Visual work management platform for campaign planning and team collaboration.",
+    category: "Marketing",
+    subcategory: "Marketing Project Management",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "SimilarWeb",
+    url: "https://www.similarweb.com",
+    description: "Traffic and digital performance benchmarking for any website.",
+    category: "Marketing",
+    subcategory: "Competitive & Ad Intelligence",
+    dateAdded: "2026-09-10",
+    logo: ""
+  },
+  {
+    title: "SpyFu",
+    url: "https://www.spyfu.com",
+    description: "See a competitor's paid and organic keywords, ads, and ranking history.",
+    category: "Marketing",
+    subcategory: "Competitive & Ad Intelligence",
+    dateAdded: "2026-09-10",
+    logo: ""
   }
 
 ];

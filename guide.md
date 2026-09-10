@@ -20,7 +20,7 @@ linksdm/
 └── GUIDE.md          → this file
 ```
 
-It currently holds 74 links across 14 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
+It currently holds 86 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
 
 Each category is shown as its own column (like Link Lowdown), with a "Latest" column first showing your most recently added links across every category. Columns longer than 8 links show a **See all →** link to expand the rest, so the page stays scannable.
 
@@ -74,6 +74,26 @@ That's it — refresh and the image replaces the placeholder square automaticall
 ## 4. Add a new category
 
 There's no separate place to "create" a category. Just type a new value into the `category` field of any link (e.g. `"category": "Video Tools"`), and the site automatically generates a new column for it. Delete all links in a category and the column disappears on its own.
+
+Remember to also add a matching `<option>` to the Category dropdown in `submit.html` (see section 7) so public submissions can pick it too.
+
+### Subcategories (optional)
+
+A category can be split into subcategories, like **Marketing** is (Social Media Management, Email Marketing, AI Copywriting, Landing Pages, Marketing Project Management, Competitive & Ad Intelligence). Add a `subcategory` field alongside `category` on any link:
+
+```js
+{
+  title: "Buffer",
+  url: "https://buffer.com",
+  description: "Schedule and publish social media posts across multiple platforms from one calendar.",
+  category: "Marketing",
+  subcategory: "Social Media Management",
+  dateAdded: "2026-09-10",
+  logo: ""
+},
+```
+
+This only changes that category's own page (`category.html`) — instead of one flat alphabetized list, it groups links under a heading per subcategory. The home page column preview for that category is unaffected (it still shows a flat, mixed preview with a "See all →" link). The order subcategories appear in is controlled by `SUBCATEGORY_ORDER` near the top of `script.js`, right under `CATEGORY_ORDER` — add a new category's name there as a key with an array of its subcategory names in the order you want them to appear. A subcategory left off that list still shows up, just appended at the end. Categories with no `subcategory` field on any of their links render exactly as before — this feature is entirely opt-in per category.
 
 ## 5. Edit or remove a link
 

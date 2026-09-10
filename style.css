@@ -621,6 +621,19 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
 }
 
+.subcategory-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subcategory-heading {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+
 /* Submit form */
 .submit-wrap {
   max-width: 460px;

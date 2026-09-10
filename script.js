@@ -18,6 +18,7 @@ const CATEGORY_ORDER = [
   "Website Platforms",
   "Fonts",
   "SEO Analytics",
+  "Marketing",
   "Hosting",
   "Icons & Stock Photos",
   "Domains",
@@ -27,6 +28,24 @@ const CATEGORY_ORDER = [
   "AI Video Generation",
   "Curated Physical Goods"
 ];
+
+// Some categories are broken into subcategories (an optional `subcategory`
+// field on the link entry in data.js). category.html groups that category's
+// links under a heading per subcategory instead of one flat list, in this
+// fixed order. A category not listed here (or a link with no `subcategory`
+// set) just renders as a flat list like before — this is additive, nothing
+// else changes. A subcategory that shows up in data.js but isn't listed here
+// is appended at the end rather than dropped.
+const SUBCATEGORY_ORDER = {
+  "Marketing": [
+    "Social Media Management",
+    "Email Marketing",
+    "AI Copywriting",
+    "Landing Pages",
+    "Marketing Project Management",
+    "Competitive & Ad Intelligence"
+  ]
+};
 
 const PLACEHOLDER_ICON = `
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -477,7 +496,31 @@ function renderCategoryPage() {
   }
 
   subtitleEl.textContent = `${items.length} link${items.length === 1 ? "" : "s"} in this category.`;
-  container.innerHTML = `<div class="link-column"><div class="row-list">${items.map(l => rowHtml(l, false)).join("")}</div></div>`;
+
+  // If any link in this category has a `subcategory` set, group the whole
+  // page by subcategory instead of one flat list (see SUBCATEGORY_ORDER).
+  const hasSubcategories = items.some(l => l.subcategory);
+  if (!hasSubcategories) {
+    container.innerHTML = `<div class="link-column"><div class="row-list">${items.map(l => rowHtml(l, false)).join("")}</div></div>`;
+    return;
+  }
+
+  const grouped = {};
+  items.forEach(l => {
+    const key = l.subcategory || "Other";
+    (grouped[key] = grouped[key] || []).push(l);
+  });
+
+  const fixedOrder = SUBCATEGORY_ORDER[catParam] || [];
+  const present = Object.keys(grouped);
+  const orderedKeys = [...fixedOrder.filter(k => present.includes(k)), ...present.filter(k => !fixedOrder.includes(k))];
+
+  container.innerHTML = `<div class="subcategory-groups">${orderedKeys.map(key => `
+    <div class="link-column">
+      <h2 class="subcategory-heading">${escapeHtml(key)}</h2>
+      <div class="row-list">${grouped[key].map(l => rowHtml(l, false)).join("")}</div>
+    </div>
+  `).join("")}</div>`;
 }
 
 // Re-renders whichever view is on the current page (the category grid on
