@@ -417,6 +417,30 @@ const LINKS = [
     dateAdded: "2026-07-10",
     logo: ""
   },
+  {
+    title: "Google Analytics 4",
+    url: "https://analytics.google.com",
+    description: "The standard free tool for tracking site traffic and user behavior.",
+    category: "SEO Analytics",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
+  {
+    title: "Surfer SEO",
+    url: "https://surferseo.com",
+    description: "Scores content against top-ranking pages while you write.",
+    category: "SEO Analytics",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
+  {
+    title: "Screaming Frog SEO Spider",
+    url: "https://www.screamingfrog.co.uk/seo-spider/",
+    description: "Crawls a site to surface broken links, redirects, and technical SEO issues.",
+    category: "SEO Analytics",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
 
   // ---------- Icons & Stock Photos ----------
   {
@@ -666,33 +690,6 @@ const LINKS = [
 
   // ---- Marketing (grouped into subcategories on category.html) ----
   {
-    title: "Google Analytics 4",
-    url: "https://analytics.google.com",
-    description: "The standard free tool for tracking site traffic and user behavior.",
-    category: "Marketing",
-    subcategory: "SEO & Analytics",
-    dateAdded: "2026-09-11",
-    logo: ""
-  },
-  {
-    title: "Surfer SEO",
-    url: "https://surferseo.com",
-    description: "Scores content against top-ranking pages while you write.",
-    category: "Marketing",
-    subcategory: "SEO & Analytics",
-    dateAdded: "2026-09-11",
-    logo: ""
-  },
-  {
-    title: "Screaming Frog SEO Spider",
-    url: "https://www.screamingfrog.co.uk/seo-spider/",
-    description: "Crawls a site to surface broken links, redirects, and technical SEO issues.",
-    category: "Marketing",
-    subcategory: "SEO & Analytics",
-    dateAdded: "2026-09-11",
-    logo: ""
-  },
-  {
     title: "Buffer",
     url: "https://buffer.com",
     description: "Schedule and publish social media posts across multiple platforms from one calendar.",
@@ -787,7 +784,7 @@ const LINKS = [
     url: "https://www.similarweb.com",
     description: "Traffic and digital performance benchmarking for any website.",
     category: "Marketing",
-    subcategory: "Competitive & Ad Intelligence",
+    subcategory: "Ad Intelligence",
     dateAdded: "2026-09-10",
     logo: ""
   },
@@ -796,7 +793,7 @@ const LINKS = [
     url: "https://www.spyfu.com",
     description: "See a competitor's paid and organic keywords, ads, and ranking history.",
     category: "Marketing",
-    subcategory: "Competitive & Ad Intelligence",
+    subcategory: "Ad Intelligence",
     dateAdded: "2026-09-10",
     logo: ""
   }

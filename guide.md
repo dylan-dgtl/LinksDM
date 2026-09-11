@@ -79,7 +79,7 @@ Remember to also add a matching `<option>` to the Category dropdown in `submit.h
 
 ### Subcategories (optional)
 
-A category can be split into subcategories, like **Marketing** is (SEO & Analytics, Social Media Management, Email Marketing, AI Copywriting, Landing Pages, Marketing Project Management, Competitive & Ad Intelligence). Add a `subcategory` field alongside `category` on any link:
+A category can be split into subcategories, like **Marketing** is (SEO & Analytics, Social Media Management, Email Marketing, AI Copywriting, Landing Pages, Marketing Project Management, Ad Intelligence). Add a `subcategory` field alongside `category` on any link:
 
 ```js
 {

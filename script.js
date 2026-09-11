@@ -44,7 +44,7 @@ const SUBCATEGORY_ORDER = {
     "AI Copywriting",
     "Landing Pages",
     "Marketing Project Management",
-    "Competitive & Ad Intelligence"
+    "Ad Intelligence"
   ]
 };
 
