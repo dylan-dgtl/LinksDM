@@ -679,20 +679,27 @@ if (document.getElementById("categoryContent")) {
 })();
 
 // ============================================================
-// AI PROMPTS — Basic (expand) / Detailed (link out) + copy button
+// AI PROMPTS — Basic / Detailed (each expands its own in-place panel when
+// it has a data-target) + copy button. Most cards' Detailed is still a
+// plain link (to ai-prompts.html, or a # placeholder for the future
+// Shopify product) rather than a button with data-target, so those are
+// left alone here and behave as normal links — this only wires up
+// buttons that actually have a panel to open.
 // Runs on any page with a #promptGrid (ai-prompts.html, index.html).
 // ============================================================
 (function setupPromptCards() {
   const grid = document.getElementById("promptGrid");
   if (!grid) return;
 
-  grid.querySelectorAll(".prompt-btn-basic").forEach(btn => {
+  grid.querySelectorAll(".prompt-btn-basic, .prompt-btn-detailed").forEach(btn => {
+    if (!btn.dataset.target) return; // plain link, e.g. Detailed -> ai-prompts.html or a # placeholder
+    const closedLabel = btn.textContent.trim();
     btn.addEventListener("click", () => {
       const panel = document.getElementById(btn.dataset.target);
       if (!panel) return;
       const isOpen = panel.classList.toggle("is-open");
       btn.classList.toggle("is-open", isOpen);
-      btn.textContent = isOpen ? "Hide" : "Basic";
+      btn.textContent = isOpen ? "Hide" : closedLabel;
     });
   });
 
