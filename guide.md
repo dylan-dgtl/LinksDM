@@ -20,7 +20,7 @@ linksdm/
 └── GUIDE.md          → this file
 ```
 
-It currently holds 86 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
+It currently holds 89 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
 
 Each category is shown as its own column (like Link Lowdown), with a "Latest" column first showing your most recently added links across every category. Columns longer than 8 links show a **See all →** link to expand the rest, so the page stays scannable.
 
@@ -79,7 +79,7 @@ Remember to also add a matching `<option>` to the Category dropdown in `submit.h
 
 ### Subcategories (optional)
 
-A category can be split into subcategories, like **Marketing** is (Social Media Management, Email Marketing, AI Copywriting, Landing Pages, Marketing Project Management, Competitive & Ad Intelligence). Add a `subcategory` field alongside `category` on any link:
+A category can be split into subcategories, like **Marketing** is (SEO & Analytics, Social Media Management, Email Marketing, AI Copywriting, Landing Pages, Marketing Project Management, Competitive & Ad Intelligence). Add a `subcategory` field alongside `category` on any link:
 
 ```js
 {

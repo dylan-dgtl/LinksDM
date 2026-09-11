@@ -666,6 +666,33 @@ const LINKS = [
 
   // ---- Marketing (grouped into subcategories on category.html) ----
   {
+    title: "Google Analytics 4",
+    url: "https://analytics.google.com",
+    description: "The standard free tool for tracking site traffic and user behavior.",
+    category: "Marketing",
+    subcategory: "SEO & Analytics",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
+  {
+    title: "Surfer SEO",
+    url: "https://surferseo.com",
+    description: "Scores content against top-ranking pages while you write.",
+    category: "Marketing",
+    subcategory: "SEO & Analytics",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
+  {
+    title: "Screaming Frog SEO Spider",
+    url: "https://www.screamingfrog.co.uk/seo-spider/",
+    description: "Crawls a site to surface broken links, redirects, and technical SEO issues.",
+    category: "Marketing",
+    subcategory: "SEO & Analytics",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
+  {
     title: "Buffer",
     url: "https://buffer.com",
     description: "Schedule and publish social media posts across multiple platforms from one calendar.",

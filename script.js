@@ -38,6 +38,7 @@ const CATEGORY_ORDER = [
 // is appended at the end rather than dropped.
 const SUBCATEGORY_ORDER = {
   "Marketing": [
+    "SEO & Analytics",
     "Social Media Management",
     "Email Marketing",
     "AI Copywriting",
