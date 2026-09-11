@@ -393,6 +393,39 @@ function swapCategoryPositions(colEntries, catA, catB) {
   colEntries[locB.colIdx][locB.idx] = entryA;
 }
 
+// Unlike swapCategoryPositions (which trades two categories' positions
+// wherever they each landed), this pins strict adjacency: catToMove is
+// pulled out of wherever the automatic balancing put it and reinserted
+// directly after afterCat in whichever column afterCat ended up in,
+// shifting anything below it in that column down by one. No-op if either
+// category is missing (e.g. no links in it, or too few columns at this
+// width for both to appear).
+function pinCategoryAfter(colEntries, catToMove, afterCat) {
+  let moveLoc = null;
+  colEntries.forEach((entries, colIdx) => {
+    entries.forEach((entry, idx) => {
+      if (entry.cat === catToMove) moveLoc = { colIdx, idx };
+    });
+  });
+  if (!moveLoc) return;
+
+  const [entry] = colEntries[moveLoc.colIdx].splice(moveLoc.idx, 1);
+
+  let afterLoc = null;
+  colEntries.forEach((entries, colIdx) => {
+    entries.forEach((e, idx) => {
+      if (e.cat === afterCat) afterLoc = { colIdx, idx };
+    });
+  });
+  if (!afterLoc) {
+    // afterCat not found (shouldn't happen) — put catToMove back where it was.
+    colEntries[moveLoc.colIdx].splice(moveLoc.idx, 0, entry);
+    return;
+  }
+
+  colEntries[afterLoc.colIdx].splice(afterLoc.idx + 1, 0, entry);
+}
+
 function renderColumns() {
   const grid = document.getElementById("columnsGrid");
   const allLinks = getAllLinks();
@@ -425,6 +458,10 @@ function renderColumns() {
   // Manual override: Domains and Fonts always trade visual positions,
   // whichever columns the automatic balancing above puts them in.
   swapCategoryPositions(colEntries, "Domains", "Fonts");
+
+  // Manual override: Marketing always renders directly under AI Tools,
+  // in whichever column AI Tools ends up in.
+  pinCategoryAfter(colEntries, "Marketing", "AI Tools");
 
   grid.innerHTML = colEntries
     .map(entries => `<div class="grid-col">${entries.map(e => e.html).join("")}</div>`)
