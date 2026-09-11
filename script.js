@@ -685,21 +685,42 @@ if (document.getElementById("categoryContent")) {
 // Shopify product) rather than a button with data-target, so those are
 // left alone here and behave as normal links — this only wires up
 // buttons that actually have a panel to open.
+// Within a single card, only one panel (Basic or Detailed) can be open
+// at a time — opening one closes the other; clicking the open one again
+// closes it.
 // Runs on any page with a #promptGrid (ai-prompts.html, index.html).
 // ============================================================
 (function setupPromptCards() {
   const grid = document.getElementById("promptGrid");
   if (!grid) return;
 
-  grid.querySelectorAll(".prompt-btn-basic, .prompt-btn-detailed").forEach(btn => {
-    if (!btn.dataset.target) return; // plain link, e.g. Detailed -> ai-prompts.html or a # placeholder
-    const closedLabel = btn.textContent.trim();
-    btn.addEventListener("click", () => {
+  grid.querySelectorAll(".prompt-card").forEach(card => {
+    const toggles = [];
+    card.querySelectorAll(".prompt-btn-basic, .prompt-btn-detailed").forEach(btn => {
+      if (!btn.dataset.target) return; // plain link, e.g. Detailed -> ai-prompts.html or a # placeholder
       const panel = document.getElementById(btn.dataset.target);
       if (!panel) return;
-      const isOpen = panel.classList.toggle("is-open");
-      btn.classList.toggle("is-open", isOpen);
-      btn.textContent = isOpen ? "Hide" : closedLabel;
+      toggles.push({ btn, panel, label: btn.textContent.trim() });
+    });
+
+    toggles.forEach(({ btn, panel }) => {
+      btn.addEventListener("click", () => {
+        const willOpen = !panel.classList.contains("is-open");
+
+        // Close every panel in this card first, so Basic and Detailed
+        // are never both visible at once.
+        toggles.forEach(t => {
+          t.panel.classList.remove("is-open");
+          t.btn.classList.remove("is-open");
+          t.btn.textContent = t.label;
+        });
+
+        if (willOpen) {
+          panel.classList.add("is-open");
+          btn.classList.add("is-open");
+          btn.textContent = "Hide";
+        }
+      });
     });
   });
 
