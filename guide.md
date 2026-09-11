@@ -15,14 +15,14 @@ linksdm/
 ├── contact.html      → "Contact Us" page — public form to message you directly
 ├── message-sent.html → confirmation page shown after a contact message
 ├── style.css         → all styling/design
-├── script.js         → renders the rows, search, and "See all" expand (you shouldn't need to touch most of this)
+├── script.js         → renders the rows and search (you shouldn't need to touch most of this)
 ├── data.js           → YOUR LINKS live here — this is the only file you'll edit regularly
 └── GUIDE.md          → this file
 ```
 
 It currently holds 89 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
 
-Each category is shown as its own column (like Link Lowdown), with a "Latest" column first showing your most recently added links across every category. Columns longer than 8 links show a **See all →** link to expand the rest, so the page stays scannable.
+Each category is shown as its own column (like Link Lowdown), with a "Latest" column first showing your most recently added links across every category. Columns longer than 8 links show a **See all →** link that takes you to that category's own page (`category.html`), where its complete, alphabetized list is shown with no cap — so the home page stays scannable while nothing is ever hidden.
 
 Below "Latest" is a row of category pills. "All" just takes you back to this home page (which already shows every category). Clicking any other pill opens `category.html`, which shows that category's complete, alphabetized list on its own page (no 8-link cap there). The pill order is controlled by `CATEGORY_ORDER` near the top of `script.js` — a brand new category you add in `data.js` still shows up in the nav automatically (it's just appended at the end until you add it to that list too).
 
@@ -93,7 +93,7 @@ A category can be split into subcategories, like **Marketing** is (SEO & Analyti
 },
 ```
 
-This only changes that category's own page (`category.html`) — instead of one flat alphabetized list, it groups links under a heading per subcategory. The home page column preview for that category is unaffected (it still shows a flat, mixed preview with a "See all →" link). The order subcategories appear in is controlled by `SUBCATEGORY_ORDER` near the top of `script.js`, right under `CATEGORY_ORDER` — add a new category's name there as a key with an array of its subcategory names in the order you want them to appear. A subcategory left off that list still shows up, just appended at the end. Categories with no `subcategory` field on any of their links render exactly as before — this feature is entirely opt-in per category.
+This only changes that category's own page (`category.html`) — instead of one flat alphabetized list, it groups links under a heading per subcategory. The home page column preview for that category is unaffected (it still shows a flat, mixed preview with a "See all →" link to the full grouped page). The order subcategories appear in is controlled by `SUBCATEGORY_ORDER` near the top of `script.js`, right under `CATEGORY_ORDER` — add a new category's name there as a key with an array of its subcategory names in the order you want them to appear. A subcategory left off that list still shows up, just appended at the end. Categories with no `subcategory` field on any of their links render exactly as before — this feature is entirely opt-in per category.
 
 ## 5. Edit or remove a link
 

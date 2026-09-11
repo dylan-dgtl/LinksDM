@@ -365,7 +365,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 .link-row.extra-row { display: none; }
-.link-column.expanded .link-row.extra-row { display: flex; }
 
 .row-link {
   display: flex;
@@ -476,11 +475,11 @@ a { color: inherit; text-decoration: none; }
 
 .see-all:hover { color: var(--accent); }
 .see-all .arrow { transition: transform .15s; }
-.link-column.expanded .see-all .arrow { transform: rotate(90deg); }
 
-/* The category-column toggle ("See all" / "Show less") gets the full
-   pill treatment. Scoped to .link-column so the unrelated "See all
-   AI Prompts" header link (which reuses the .see-all class) is unaffected. */
+/* The category-column "See all" link (to that category's own page) gets
+   the full pill treatment. Scoped to .link-column so the unrelated "See
+   all AI Prompts" header link (which reuses the .see-all class) is
+   unaffected. */
 .link-column .see-all {
   display: flex;
   justify-content: center;

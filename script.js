@@ -214,7 +214,7 @@ function columnHtml(id, heading, items, opts) {
     <div class="link-column" data-col-id="${id}">
       <h3 class="col-heading">${escapeHtml(heading)}</h3>
       <div class="row-list">${rowsHtml}</div>
-      ${hasMore ? `<button class="see-all" type="button">See all <span class="arrow">→</span></button>` : ""}
+      ${hasMore ? `<a class="see-all" href="${categoryHref(heading)}">See all <span class="arrow">→</span></a>` : ""}
     </div>
   `;
 }
@@ -463,19 +463,13 @@ function renderColumns() {
   // in whichever column AI Tools ends up in.
   pinCategoryAfter(colEntries, "Marketing", "AI Tools");
 
+  // Manual override: AI Video Generation always renders directly under
+  // AI Design, in whichever column AI Design ends up in.
+  pinCategoryAfter(colEntries, "AI Video Generation", "AI Design");
+
   grid.innerHTML = colEntries
     .map(entries => `<div class="grid-col">${entries.map(e => e.html).join("")}</div>`)
     .join("");
-
-  grid.querySelectorAll(".see-all").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const col = btn.closest(".link-column");
-      const expanded = col.classList.toggle("expanded");
-      btn.innerHTML = expanded
-        ? `Show less <span class="arrow">→</span>`
-        : `See all <span class="arrow">→</span>`;
-    });
-  });
 }
 
 const NEW_PAGE_WINDOW_DAYS = 30;
