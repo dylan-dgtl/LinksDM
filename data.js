@@ -86,6 +86,14 @@ const LINKS = [
     logo: ""
   },
   {
+    title: "Lovable",
+    url: "https://lovable.dev",
+    description: "AI app builder that creates full web apps and websites from chat prompts.",
+    category: "AI Tools",
+    dateAdded: "2026-09-11",
+    logo: ""
+  },
+  {
     title: "Midjourney",
     url: "https://www.midjourney.com",
     description: "AI image generation for concepts, mockups, and creative visuals.",

@@ -20,7 +20,7 @@ linksdm/
 └── GUIDE.md          → this file
 ```
 
-It currently holds 89 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
+It currently holds 90 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
 
 Each category is shown as its own column (like Link Lowdown), with a "Latest" column first showing your most recently added links across every category. Columns longer than 8 links show a **See all →** link that takes you to that category's own page (`category.html`), where its complete, alphabetized list is shown with no cap — so the home page stays scannable while nothing is ever hidden.
 
