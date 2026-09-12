@@ -467,6 +467,12 @@ function renderColumns() {
   // AI Design, in whichever column AI Design ends up in.
   pinCategoryAfter(colEntries, "AI Video Generation", "AI Design");
 
+  // Manual override: Learning always renders directly under Curated
+  // Physical Goods, in whichever column Curated Physical Goods ends up in —
+  // Curated Physical Goods is short on its own, so this closes the gap it
+  // otherwise leaves under its column relative to the other two.
+  pinCategoryAfter(colEntries, "Learning", "Curated Physical Goods");
+
   grid.innerHTML = colEntries
     .map(entries => `<div class="grid-col">${entries.map(e => e.html).join("")}</div>`)
     .join("");
