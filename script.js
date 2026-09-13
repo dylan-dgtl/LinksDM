@@ -742,3 +742,41 @@ if (document.getElementById("categoryContent")) {
     });
   });
 })();
+
+// ============================================================
+// FOOTER: live link count + subscribe form
+// Runs on every page (the footer is shared sitewide).
+// ============================================================
+(function setupFooterLinkCount() {
+  const countEl = document.getElementById("footerLinkCount");
+  if (!countEl) return;
+  if (typeof LINKS === "undefined") {
+    // Page doesn't load data.js (nothing to count) — hide the line
+    // instead of showing an inaccurate or stuck "Loading…" state.
+    countEl.parentElement.hidden = true;
+    return;
+  }
+  const count = LINKS.length;
+  countEl.textContent = `${count} link${count === 1 ? "" : "s"}. Updated weekly`;
+})();
+
+(function setupSubscribeForm() {
+  const form = document.getElementById("subscribeForm");
+  if (!form) return;
+  const emailInput = document.getElementById("subscribeEmail");
+  const msg = document.getElementById("subscribeMsg");
+
+  // NOTE: this only confirms the submission in the UI. To actually collect
+  // subscribers, point this form at an email provider (Mailchimp, Beehiiv,
+  // ConvertKit, Klaviyo, etc.) — either by swapping this handler for that
+  // provider's form action/endpoint, or by posting `email` to it here.
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    msg.textContent = "Thanks — you're on the list.";
+    msg.hidden = false;
+    form.reset();
+  });
+})();

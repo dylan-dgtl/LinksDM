@@ -54,13 +54,39 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <p class="footer-brand">LinksDM — a digital bookmarking site.</p>
-    <nav class="footer-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="new.html" class="nav-link">New Links</a>
-      <a href="submit.html" class="nav-link">Submit a Link</a>
-      <a href="contact.html" class="nav-link">Contact Us</a>
-    </nav>
+    <div class="footer-brand-col">
+      <div class="footer-logo"><span class="dot"></span>LinksDM</div>
+      <p class="footer-brand">A curated, searchable collection of the web's best tools, plus a free library of AI prompts.</p>
+      <form class="subscribe-form" id="subscribeForm" novalidate>
+        <label for="subscribeEmail" class="subscribe-label">Get new links by email</label>
+        <div class="subscribe-row">
+          <input type="email" id="subscribeEmail" name="email" placeholder="you@email.com" required autocomplete="email">
+          <button type="submit" class="subscribe-btn">Subscribe</button>
+        </div>
+        <p class="subscribe-msg" id="subscribeMsg" hidden></p>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <nav class="footer-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="new.html" class="nav-link">New Links</a>
+        <a href="ai-prompts.html" class="nav-link">AI Prompts</a>
+        <a href="category.html" class="nav-link active">Browse by Category</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <nav class="footer-nav">
+        <a href="submit.html" class="nav-link">Submit a Link</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+        <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-status"><span class="status-light"></span><span id="footerLinkCount">Loading link count&hellip;</span></span>
+    <span>&copy; 2026 LinksDM. All rights reserved.</span>
   </div>
 </footer>
 
