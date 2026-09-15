@@ -70,6 +70,19 @@ function getDomain(url) {
   }
 }
 
+// Formats a data.js "YYYY-MM-DD" dateAdded value for display (e.g. "Sep 10,
+// 2026"). Parsed and formatted in UTC so the date shown always matches what
+// was typed in data.js, regardless of the visitor's local timezone.
+function formatDateAdded(dateStr) {
+  if (!dateStr) return "";
+  const parts = String(dateStr).split("-").map(Number);
+  const [y, m, d] = parts;
+  if (!y || !m || !d) return "";
+  const date = new Date(Date.UTC(y, m - 1, d));
+  if (isNaN(date.getTime())) return "";
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+
 // Tags every outbound link with ?utm_source=linksdm.com (or &utm_source=...
 // if the URL already has query params) so it shows up in the destination
 // site's analytics as traffic that came from LinksDM — same idea as
@@ -123,7 +136,8 @@ function tryNextFavicon(imgEl, domain, nextIndex) {
   imgEl.src = sources[nextIndex];
 }
 
-function rowHtml(link, isExtra) {
+function rowHtml(link, isExtra, opts) {
+  opts = opts || {};
   // Use a manually set logo if one is provided in data.js. Otherwise,
   // auto-fetch the site's favicon, trying DuckDuckGo's lookup first and
   // Google's as backup (see faviconSources above) before giving up and
@@ -139,6 +153,11 @@ function rowHtml(link, isExtra) {
     logo = PLACEHOLDER_ICON;
   }
 
+  const dateLabel = formatDateAdded(link.dateAdded);
+  const dateHtml = opts.showDate && dateLabel
+    ? `<span class="row-date">${escapeHtml(dateLabel)}</span>`
+    : "";
+
   return `
     <div class="link-row${isExtra ? " extra-row" : ""}"
        data-title="${escapeHtml((link.title || "").toLowerCase())}"
@@ -151,6 +170,7 @@ function rowHtml(link, isExtra) {
         <span class="row-text">
           <span class="row-title">${escapeHtml(link.title)}</span>
           <p class="row-desc">${escapeHtml(link.description || "")}</p>
+          ${dateHtml}
         </span>
       </a>
       <button type="button"
@@ -491,7 +511,7 @@ function renderNewLinksPage() {
     .filter(l => new Date(l.dateAdded) >= cutoff)
     .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
 
-  list.innerHTML = recent.map(link => rowHtml(link, false)).join("");
+  list.innerHTML = recent.map(link => rowHtml(link, false, { showDate: true })).join("");
 
   const emptyState = document.getElementById("newEmptyState");
   if (emptyState) emptyState.hidden = recent.length > 0;
@@ -744,20 +764,26 @@ if (document.getElementById("categoryContent")) {
 })();
 
 // ============================================================
-// FOOTER: live link count + subscribe form
-// Runs on every page (the footer is shared sitewide).
+// LIVE LINK COUNT (footer, shared sitewide + the homepage hero, which
+// has its own matching green-light badge under the subtext).
 // ============================================================
-(function setupFooterLinkCount() {
-  const countEl = document.getElementById("footerLinkCount");
-  if (!countEl) return;
+(function setupLinkCounts() {
+  const countEls = [
+    document.getElementById("footerLinkCount"),
+    document.getElementById("heroLinkCount"),
+  ].filter(Boolean);
+  if (!countEls.length) return;
+
   if (typeof LINKS === "undefined") {
-    // Page doesn't load data.js (nothing to count) — hide the line
+    // Page doesn't load data.js (nothing to count) — hide the line(s)
     // instead of showing an inaccurate or stuck "Loading…" state.
-    countEl.parentElement.hidden = true;
+    countEls.forEach(el => { el.parentElement.hidden = true; });
     return;
   }
+
   const count = LINKS.length;
-  countEl.textContent = `${count} link${count === 1 ? "" : "s"}. Updated weekly`;
+  const text = `${count} link${count === 1 ? "" : "s"}. Updated weekly`;
+  countEls.forEach(el => { el.textContent = text; });
 })();
 
 (function setupSubscribeForm() {
