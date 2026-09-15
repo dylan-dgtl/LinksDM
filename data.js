@@ -210,6 +210,14 @@ const LINKS = [
 
   // ---------- AI Design ----------
   {
+    title: "Figma AI",
+    url: "https://www.figma.com/ai/",
+    description: "Figma's built-in AI tools for generating first drafts, editing designs, and speeding up UI work right in the canvas.",
+    category: "AI Design",
+    dateAdded: "2026-09-15",
+    logo: ""
+  },
+  {
     title: "Getdesign.md",
     url: "https://getdesign.md",
     description: "Browse AI-readable design breakdowns, or request a custom one.",
@@ -226,12 +234,28 @@ const LINKS = [
     logo: "assets/favicons/impeccable.svg"
   },
   {
+    title: "Paper",
+    url: "https://paper.design/",
+    description: "Code-based design canvas with MCP support, letting AI agents read and edit designs alongside you.",
+    category: "AI Design",
+    dateAdded: "2026-09-15",
+    logo: ""
+  },
+  {
     title: "Refero Styles",
     url: "https://styles.refero.design/",
     description: "Curated library of AI-readable design systems from popular product websites.",
     category: "AI Design",
     dateAdded: "2026-09-06",
     logo: "assets/favicons/refero-styles.png"
+  },
+  {
+    title: "Transitions.dev",
+    url: "https://transitions.dev/",
+    description: "Copy-paste UI animations and transitions for web apps, plus a skill for AI agents to integrate them directly.",
+    category: "AI Design",
+    dateAdded: "2026-09-15",
+    logo: ""
   },
   {
     title: "TypeUI",
@@ -331,6 +355,22 @@ const LINKS = [
     description: "Cloud platform for deploying and hosting apps and backend services.",
     category: "Hosting",
     dateAdded: "2026-08-23",
+    logo: ""
+  },
+  {
+    title: "Render",
+    url: "https://render.com/",
+    description: "Cloud platform for hosting web services, static sites, and databases with automatic deploys from Git.",
+    category: "Hosting",
+    dateAdded: "2026-09-15",
+    logo: ""
+  },
+  {
+    title: "Vercel",
+    url: "https://vercel.com/",
+    description: "Deployment platform for frontend frameworks like Next.js, with instant previews for every push.",
+    category: "Hosting",
+    dateAdded: "2026-09-15",
     logo: ""
   },
 

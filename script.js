@@ -446,6 +446,30 @@ function pinCategoryAfter(colEntries, catToMove, afterCat) {
   colEntries[afterLoc.colIdx].splice(afterLoc.idx + 1, 0, entry);
 }
 
+// Pins catToMove as the very first entry of a specific column index (0-based,
+// left to right), removing it from wherever it landed. Unlike
+// pinCategoryAfter (which only guarantees adjacency to another category),
+// this guarantees a column START position — the one spot every column lines
+// up on regardless of how much content the others hold — so two categories
+// each pinned to the start of their own column render side by side instead
+// of one merely following the other. No-op if that column index doesn't
+// exist at the current width (e.g. index 2 on tablet's 2 columns, or index
+// 1/2 on the single mobile column) or if catToMove itself isn't present.
+function pinCategoryToColumnStart(colEntries, catToMove, colIndex) {
+  if (colIndex < 0 || colIndex >= colEntries.length) return;
+
+  let moveLoc = null;
+  colEntries.forEach((entries, colIdx) => {
+    entries.forEach((entry, idx) => {
+      if (entry.cat === catToMove) moveLoc = { colIdx, idx };
+    });
+  });
+  if (!moveLoc) return;
+
+  const [entry] = colEntries[moveLoc.colIdx].splice(moveLoc.idx, 1);
+  colEntries[colIndex].unshift(entry);
+}
+
 function renderColumns() {
   const grid = document.getElementById("columnsGrid");
   const allLinks = getAllLinks();
@@ -475,23 +499,87 @@ function renderColumns() {
     colHeight[target] += heightEstimate;
   });
 
-  // Manual override: Domains and Fonts always trade visual positions,
-  // whichever columns the automatic balancing above puts them in.
-  swapCategoryPositions(colEntries, "Domains", "Fonts");
+  // Manual overrides below chain several categories into fixed groups,
+  // regardless of where the automatic balancing above first puts them.
+  // Each column's running total is kept in mind when placing these (see the
+  // comments on each), so the three columns land close to even overall even
+  // though their contents are hand-picked rather than purely automatic.
+  // Re-check the column heights (grid.querySelectorAll(".grid-col") in a
+  // browser console works) after adding or removing links, since a
+  // category's row count shifting can throw this off — that's what
+  // triggered the reshuffle below in the first place.
 
-  // Manual override: Marketing always renders directly under AI Tools,
-  // in whichever column AI Tools ends up in.
+  // Column 1: AI Tools, Marketing, Hosting, Website Platforms, Wallpapers —
+  // AI Tools leads as it did originally, with Marketing directly after it
+  // (same pairing as always, nothing moved to the top). Hosting, then
+  // Website Platforms and Wallpapers, round the column out.
   pinCategoryAfter(colEntries, "Marketing", "AI Tools");
+  pinCategoryAfter(colEntries, "Hosting", "Marketing");
+  pinCategoryAfter(colEntries, "Website Platforms", "Hosting");
+  pinCategoryAfter(colEntries, "Wallpapers", "Website Platforms");
 
-  // Manual override: AI Video Generation always renders directly under
-  // AI Design, in whichever column AI Design ends up in.
+  if (colCount === 1) {
+    // No 2nd column exists on the single mobile column, so keep SEO
+    // Analytics directly after Marketing instead — they still read one
+    // after the other.
+    pinCategoryAfter(colEntries, "SEO Analytics", "Marketing");
+  } else {
+    // Desktop / tablet: SEO Analytics goes directly under Design
+    // Inspiration — which, like AI Tools, is a full 8-row category — so it
+    // lands in column 2 at roughly the same height as Marketing sits in
+    // column 1, reading as side by side rather than one column leading
+    // with Marketing itself.
+    pinCategoryAfter(colEntries, "SEO Analytics", "Design Inspiration");
+  }
+  if (colCount === 3) {
+    // Desktop: AI Design leads column 3, starting at the same height as
+    // Design Inspiration atop column 2 (both full 8-row categories), so the
+    // two read as side by side — same pattern as Marketing/SEO Analytics.
+    pinCategoryToColumnStart(colEntries, "AI Design", 2);
+  } else {
+    // Tablet / mobile: no 3rd column exists to place AI Design in on its
+    // own, so keep it directly after SEO Analytics instead — still grouped
+    // with Design Inspiration's column, just stacked rather than side by
+    // side.
+    pinCategoryAfter(colEntries, "AI Design", "SEO Analytics");
+  }
   pinCategoryAfter(colEntries, "AI Video Generation", "AI Design");
 
-  // Manual override: Learning always renders directly under Curated
-  // Physical Goods, in whichever column Curated Physical Goods ends up in —
-  // Curated Physical Goods is short on its own, so this closes the gap it
-  // otherwise leaves under its column relative to the other two.
-  pinCategoryAfter(colEntries, "Learning", "Curated Physical Goods");
+  if (colCount === 2) {
+    // Tablet (2 columns): there's no 3rd column to hold this grouping on
+    // its own, and stacking all of it behind one of the two columns leaves
+    // that column roughly twice the other's height. Splitting it across
+    // both columns instead — Domains/Fonts/Productivity & Business behind
+    // column 1, Icons & Stock Photos/Curated Physical Goods/Learning behind
+    // column 2 — keeps the two close to even.
+    pinCategoryAfter(colEntries, "Domains", "Wallpapers");
+    pinCategoryAfter(colEntries, "Fonts", "Domains");
+    pinCategoryAfter(colEntries, "Productivity & Business", "Fonts");
+    swapCategoryPositions(colEntries, "Domains", "Fonts");
+
+    pinCategoryAfter(colEntries, "Icons & Stock Photos", "AI Video Generation");
+    pinCategoryAfter(colEntries, "Curated Physical Goods", "Icons & Stock Photos");
+    pinCategoryAfter(colEntries, "Learning", "Curated Physical Goods");
+  } else {
+    // Desktop (3 columns): now that AI Design/AI Video Generation lead
+    // column 3 above, Icons & Stock Photos and Productivity & Business join
+    // column 2 (behind SEO Analytics) instead, while Domains, Fonts,
+    // Curated Physical Goods, and Learning join column 3 (behind AI Video
+    // Generation) — splitting what used to be one column's worth of
+    // categories keeps all three columns close to even now that column 3
+    // starts with two more categories than it used to. Learning still stays
+    // directly under Curated Physical Goods, and Domains and Fonts stay
+    // next to each other, still trading which one renders first. (On the
+    // single mobile column this chain still runs — it just becomes reading
+    // order rather than two columns.)
+    pinCategoryAfter(colEntries, "Icons & Stock Photos", "SEO Analytics");
+    pinCategoryAfter(colEntries, "Productivity & Business", "Icons & Stock Photos");
+    pinCategoryAfter(colEntries, "Domains", "AI Video Generation");
+    pinCategoryAfter(colEntries, "Fonts", "Domains");
+    pinCategoryAfter(colEntries, "Curated Physical Goods", "Fonts");
+    pinCategoryAfter(colEntries, "Learning", "Curated Physical Goods");
+    swapCategoryPositions(colEntries, "Domains", "Fonts");
+  }
 
   grid.innerHTML = colEntries
     .map(entries => `<div class="grid-col">${entries.map(e => e.html).join("")}</div>`)
