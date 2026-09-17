@@ -581,6 +581,15 @@ function renderColumns() {
     swapCategoryPositions(colEntries, "Domains", "Fonts");
   }
 
+  if (colCount === 1) {
+    // Mobile only: AI Design and AI Video Generation render directly under
+    // AI Tools, ahead of Marketing/SEO Analytics and everything else — a
+    // reading-order preference specific to the single mobile column, so it
+    // doesn't touch the desktop or tablet layouts above.
+    pinCategoryAfter(colEntries, "AI Design", "AI Tools");
+    pinCategoryAfter(colEntries, "AI Video Generation", "AI Design");
+  }
+
   grid.innerHTML = colEntries
     .map(entries => `<div class="grid-col">${entries.map(e => e.html).join("")}</div>`)
     .join("");
