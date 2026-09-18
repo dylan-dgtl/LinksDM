@@ -1138,12 +1138,45 @@ a { color: inherit; text-decoration: none; }
 
 .prompt-copy-btn svg { flex-shrink: 0; }
 
+/* Image Prompts */
+.image-prompts-section {
+  margin-top: 44px;
+}
+
+.image-prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  align-items: start;
+}
+
+.image-prompt-card {
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.image-prompt-photo {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background: var(--bg);
+}
+
+.image-prompt-body {
+  padding: 18px 20px 22px;
+}
+
 @media (max-width: 860px) {
   .prompt-grid { grid-template-columns: repeat(2, 1fr); }
+  .image-prompt-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
   .prompt-grid { grid-template-columns: 1fr; }
+  .image-prompt-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {

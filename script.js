@@ -847,7 +847,9 @@ if (document.getElementById("categoryContent")) {
     });
   });
 
-  grid.querySelectorAll(".prompt-copy-btn").forEach(btn => {
+  // Document-wide (not just inside #promptGrid) so the Image Prompts
+  // section's copy buttons, which sit outside the grid, work the same way.
+  document.querySelectorAll(".prompt-copy-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const panel = document.getElementById(btn.dataset.copyTarget);
       const textEl = panel && panel.querySelector(".prompt-text");
