@@ -189,6 +189,41 @@ function rowHtml(link, isExtra, opts) {
   `;
 }
 
+// Row renderer for the "New" page's 4-column table (site / category /
+// description / date added). Kept separate from rowHtml() so the stacked
+// card style used everywhere else (home, category pages) is untouched.
+function newTableRowHtml(link) {
+  const domain = getDomain(link.url);
+  let logo;
+  if (link.logo) {
+    logo = `<img src="${escapeHtml(link.logo)}" alt="" loading="lazy" onerror="showPlaceholderIcon(this)">`;
+  } else if (domain) {
+    const firstSrc = faviconSources(domain)[0];
+    logo = `<img src="${escapeHtml(firstSrc)}" alt="" loading="lazy" onerror="tryNextFavicon(this, '${escapeHtml(domain)}', 1)">`;
+  } else {
+    logo = PLACEHOLDER_ICON;
+  }
+
+  const dateLabel = formatDateAdded(link.dateAdded) || "—";
+
+  return `
+    <a class="new-row"
+       href="${escapeHtml(withSource(link.url))}"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-title="${escapeHtml((link.title || "").toLowerCase())}"
+       data-desc="${escapeHtml((link.description || "").toLowerCase())}">
+      <span class="new-col new-col-site">
+        <span class="row-logo">${logo}</span>
+        <span class="new-site-name">${escapeHtml(link.title)}</span>
+      </span>
+      <span class="new-col new-col-category">${escapeHtml(link.category || "")}</span>
+      <span class="new-col new-col-desc">${escapeHtml(link.description || "")}</span>
+      <span class="new-col new-col-date">${escapeHtml(dateLabel)}</span>
+    </a>
+  `;
+}
+
 function latestCardHtml(link) {
   const domain = getDomain(link.url);
   let logo;
@@ -608,7 +643,7 @@ function renderNewLinksPage() {
     .filter(l => new Date(l.dateAdded) >= cutoff)
     .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
 
-  list.innerHTML = recent.map(link => rowHtml(link, false, { showDate: true })).join("");
+  list.innerHTML = recent.map(link => newTableRowHtml(link)).join("");
 
   const emptyState = document.getElementById("newEmptyState");
   if (emptyState) emptyState.hidden = recent.length > 0;
