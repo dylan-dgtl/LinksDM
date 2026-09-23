@@ -1,0 +1,11 @@
+# Canonical URL cleanup: force the .html file paths to the clean paths
+# used in the sitemap and all internal links, so Google indexes one URL
+# per page instead of two. Query strings (e.g. /category.html?cat=X) are
+# passed through automatically by Netlify.
+/index.html            /                 301!
+/new.html               /new             301!
+/ai-prompts.html        /ai-prompts      301!
+/category.html          /category        301!
+/submit.html            /submit          301!
+/contact.html           /contact         301!
+/privacy-policy.html    /privacy-policy  301!

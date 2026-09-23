@@ -399,14 +399,14 @@ function getOrderedCategories() {
 }
 
 function categoryHref(cat) {
-  return `category.html?cat=${encodeURIComponent(cat)}`;
+  return `/category?cat=${encodeURIComponent(cat)}`;
 }
 
 function renderCategoryNav() {
   const nav = document.getElementById("categoryNav");
   if (!nav) return;
   const categories = getOrderedCategories();
-  const pills = [`<a class="category-pill category-pill-all" href="index.html">All</a>`]
+  const pills = [`<a class="category-pill category-pill-all" href="/">All</a>`]
     .concat(categories.map(cat => `<a class="category-pill" href="${categoryHref(cat)}">${escapeHtml(cat)}</a>`));
   nav.innerHTML = pills.join("");
 }
@@ -668,7 +668,7 @@ function renderCategoryPage() {
   const catParam = params.get("cat");
 
   if (!catParam) {
-    window.location.replace("index.html");
+    window.location.replace("/");
     return;
   }
 
@@ -678,6 +678,19 @@ function renderCategoryPage() {
 
   document.title = `${catParam} — LinksDM`;
   titleEl.textContent = catParam;
+
+  // Static markup ships a generic canonical (/category) since the real,
+  // per-category URL only exists once ?cat= is known. Point it at this
+  // exact category so Google treats each category as its own page rather
+  // than folding them all into the bare /category URL.
+  const canonicalEl = document.querySelector('link[rel="canonical"]');
+  if (canonicalEl) {
+    canonicalEl.href = `https://www.linksdm.com/category?cat=${encodeURIComponent(catParam)}`;
+  }
+  const descEl = document.querySelector('meta[name="description"]');
+  if (descEl) {
+    descEl.setAttribute("content", `Browse ${catParam} on LinksDM: a curated list of ${catParam.toLowerCase()} tools and resources.`);
+  }
 
   if (items.length === 0) {
     subtitleEl.textContent = "No links found in this category.";
