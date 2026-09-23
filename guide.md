@@ -17,8 +17,19 @@ linksdm/
 ├── style.css         → all styling/design
 ├── script.js         → renders the rows and search (you shouldn't need to touch most of this)
 ├── data.js           → YOUR LINKS live here — this is the only file you'll edit regularly
+├── build/prerender.js → runs automatically on every deploy, see "How pages get their content" below
+├── netlify.toml      → tells Netlify to run build/prerender.js before publishing
 └── GUIDE.md          → this file
 ```
+
+## How pages get their content
+
+Every page's link listings, the "Browse by category" pill nav, and the link-count lines in the header/footer are written into the HTML twice, on purpose:
+
+1. **At deploy time.** When you push to GitHub, Netlify runs `build/prerender.js`, which reads `data.js` and writes the current links straight into `index.html`, `new.html`, and every `category-*.html` file before publishing. This is what search engines and social-media link previews see on the very first request — real, readable content, not an empty box waiting on JavaScript.
+2. **In the visitor's browser.** `script.js` then re-renders the same content live, exactly as it always has — this is what gives you instant search, the "remove a link" trash icon, and the homepage's fine-tuned column layout.
+
+You'll never need to run anything by hand — this happens automatically every time you push a change to `data.js`. If you ever move the site off Netlify to a host that doesn't run a build command, the pages still work fine; they'd just go back to filling in via `script.js` alone, the way they did before this was added.
 
 It currently holds 90 links across 15 categories (AI Tools, Design Inspiration, AI Design, Website Platforms, Fonts, SEO Analytics, Marketing, Hosting, Icons & Stock Photos, Domains, Learning, Productivity & Business, Wallpapers, AI Video Generation, Curated Physical Goods).
 

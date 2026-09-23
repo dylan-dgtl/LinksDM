@@ -1,0 +1,9 @@
+# Runs the pre-render step (build/prerender.js) before every deploy, so
+# the homepage columns, Latest strip, category pages, New page table,
+# category pill nav, and link-count lines all ship with real, crawlable
+# content baked into the HTML — instead of an empty container that only
+# fills in once script.js runs in the visitor's browser. See
+# build/prerender.js for the full explanation.
+[build]
+  command = "node build/prerender.js"
+  publish = "."
