@@ -877,8 +877,22 @@ a { color: inherit; text-decoration: none; }
 .back-link:hover { color: var(--accent); }
 
 #categoryTitle,
-#categorySubtitle {
+#categorySubtitle,
+#categoryCount {
   text-align: center;
+}
+
+#categorySubtitle {
+  margin-bottom: 6px;
+}
+
+#categoryCount {
+  margin-bottom: 28px;
+}
+
+.category-nav-detail {
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .category-content {

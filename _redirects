@@ -9,3 +9,24 @@
 /submit.html            /submit          301!
 /contact.html           /contact         301!
 /privacy-policy.html    /privacy-policy  301!
+
+# Each category now has its own dedicated static page (see the
+# category-*.html files) instead of one shared category.html keyed off
+# a ?cat= query string, so Google can index 15 distinct pages instead of
+# folding them all into one. These are rewrites (200), not redirects, so
+# the clean /category/<slug> URL stays in the address bar.
+/category/ai-tools                 /category-ai-tools.html                 200
+/category/design-inspiration       /category-design-inspiration.html       200
+/category/ai-design                /category-ai-design.html                200
+/category/website-platforms        /category-website-platforms.html        200
+/category/fonts                    /category-fonts.html                    200
+/category/seo-analytics            /category-seo-analytics.html            200
+/category/marketing                /category-marketing.html                200
+/category/hosting                  /category-hosting.html                  200
+/category/icons-stock-photos       /category-icons-stock-photos.html       200
+/category/domains                  /category-domains.html                  200
+/category/learning                 /category-learning.html                 200
+/category/productivity-business    /category-productivity-business.html    200
+/category/wallpapers               /category-wallpapers.html               200
+/category/ai-video-generation      /category-ai-video-generation.html      200
+/category/curated-physical-goods   /category-curated-physical-goods.html   200

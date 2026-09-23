@@ -398,8 +398,21 @@ function getOrderedCategories() {
   return [...ordered, ...leftover];
 }
 
+// Turns a category name into the URL slug its dedicated page lives at
+// (e.g. "Icons & Stock Photos" -> "icons-stock-photos"). Every category
+// has its own static page at /category/<slug> (see the category-*.html
+// files) rather than one shared page keyed off a ?cat= query string, so
+// each category is a real, distinct URL Google can index on its own.
+function categorySlug(cat) {
+  return cat
+    .toLowerCase()
+    .replace(/&/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function categoryHref(cat) {
-  return `/category?cat=${encodeURIComponent(cat)}`;
+  return `/category/${categorySlug(cat)}`;
 }
 
 function renderCategoryNav() {
@@ -650,27 +663,36 @@ function renderNewLinksPage() {
 }
 
 // ============================================================
-// CATEGORY PAGE (category.html?cat=Category+Name)
+// CATEGORY PAGES (/category/<slug>, one dedicated static page per
+// category — see the category-*.html files)
 // ============================================================
 // Shows the full, alphabetized, un-capped list for one category (no
 // "See all" needed here, since it's not sharing space with other columns).
-// The "All" pill lives on the homepage itself (index.html already shows
-// every category), so a visit to this page with no ?cat= — or an
-// unrecognized one — just goes back home rather than showing a blank page.
+// Each page ships its own static intro sentence (#categorySubtitle) that
+// this function leaves untouched, and fills the separate #categoryCount
+// element with the live count instead — so the page still has real,
+// category-specific text before this script ever runs.
+//
+// category.html?cat=Category+Name is kept around as an unlinked, noindex
+// legacy entry point (in case anything still links to the old query-string
+// form) and falls back to the same #categorySubtitle element for the count
+// since it has no #categoryCount of its own.
 
 function renderCategoryPage() {
   const titleEl = document.getElementById("categoryTitle");
   const subtitleEl = document.getElementById("categorySubtitle");
+  const countEl = document.getElementById("categoryCount") || subtitleEl;
   const container = document.getElementById("categoryContent");
   if (!container) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const catParam = params.get("cat");
+  const catParam = container.dataset.category || new URLSearchParams(window.location.search).get("cat");
 
   if (!catParam) {
     window.location.replace("/");
     return;
   }
+
+  renderCategoryNav();
 
   const allLinks = getAllLinks();
   const sortByTitle = (a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
@@ -679,26 +701,25 @@ function renderCategoryPage() {
   document.title = `${catParam} — LinksDM`;
   titleEl.textContent = catParam;
 
-  // Static markup ships a generic canonical (/category) since the real,
-  // per-category URL only exists once ?cat= is known. Point it at this
-  // exact category so Google treats each category as its own page rather
-  // than folding them all into the bare /category URL.
+  // The legacy ?cat= page ships a generic canonical (/category), since it
+  // has no fixed category of its own. Point it at this category's real,
+  // dedicated URL so Google consolidates onto that page instead of this one.
   const canonicalEl = document.querySelector('link[rel="canonical"]');
   if (canonicalEl) {
-    canonicalEl.href = `https://www.linksdm.com/category?cat=${encodeURIComponent(catParam)}`;
+    canonicalEl.href = `https://www.linksdm.com${categoryHref(catParam)}`;
   }
   const descEl = document.querySelector('meta[name="description"]');
-  if (descEl) {
+  if (descEl && !container.dataset.category) {
     descEl.setAttribute("content", `Browse ${catParam} on LinksDM: a curated list of ${catParam.toLowerCase()} tools and resources.`);
   }
 
   if (items.length === 0) {
-    subtitleEl.textContent = "No links found in this category.";
+    countEl.textContent = "No links found in this category.";
     container.innerHTML = `<p class="empty-state">This category doesn't have any links yet.</p>`;
     return;
   }
 
-  subtitleEl.textContent = `${items.length} link${items.length === 1 ? "" : "s"} in this category.`;
+  countEl.textContent = `${items.length} link${items.length === 1 ? "" : "s"} in this category.`;
 
   // If any link in this category has a `subcategory` set, group the whole
   // page by subcategory instead of one flat list (see SUBCATEGORY_ORDER).
