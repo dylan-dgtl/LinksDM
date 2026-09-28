@@ -184,6 +184,14 @@ const LINKS = [
     logo: ""
   },
   {
+    title: "Navbar Gallery",
+    url: "https://www.navbar.gallery",
+    description: "Curated collection of navigation bar designs from real websites.",
+    category: "Design Inspiration",
+    dateAdded: "2026-09-28",
+    logo: ""
+  },
+  {
     title: "Pexels",
     url: "https://www.pexels.com",
     description: "Free stock photos and videos for commercial use.",
