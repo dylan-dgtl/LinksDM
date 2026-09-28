@@ -242,6 +242,14 @@ const LINKS = [
     logo: "assets/favicons/impeccable.svg"
   },
   {
+    title: "Napkin.ai",
+    url: "https://www.napkin.ai",
+    description: "Turns text into flowcharts, diagrams, and infographics automatically.",
+    category: "AI Design",
+    dateAdded: "2026-09-28",
+    logo: ""
+  },
+  {
     title: "Paper",
     url: "https://paper.design/",
     description: "Code-based design canvas with MCP support, letting AI agents read and edit designs alongside you.",
