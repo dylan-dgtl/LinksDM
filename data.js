@@ -234,6 +234,14 @@ const LINKS = [
     logo: ""
   },
   {
+    title: "HausDraft",
+    url: "https://hausdraft.com",
+    description: "Turns a photo of a room, facade, or yard into an AI redesign, with floor plans and cost estimates.",
+    category: "AI Design",
+    dateAdded: "2026-10-29",
+    logo: ""
+  },
+  {
     title: "Impeccable",
     url: "https://impeccable.style/",
     description: "Gives AI coding agents a better eye for design, cutting generic \"AI slop\" for cleaner UIs.",
