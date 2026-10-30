@@ -513,6 +513,14 @@ const LINKS = [
     dateAdded: "2026-09-11",
     logo: ""
   },
+  {
+    title: "Elevate SEO",
+    url: "https://seo.elevatedm.ca",
+    description: "Tracks Google and Google Maps rankings, and checks whether AI assistants recommend your business.",
+    category: "SEO Analytics",
+    dateAdded: "2026-10-30",
+    logo: ""
+  },
 
   // ---------- Icons & Stock Photos ----------
   {
