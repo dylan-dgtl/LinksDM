@@ -572,6 +572,14 @@ const LINKS = [
     logo: "assets/favicons/morphicons.png"
   },
   {
+    title: "Shutterstock",
+    url: "https://www.shutterstock.com",
+    description: "Licensed stock photos, illustrations, video, and music, plus AI editing tools.",
+    category: "Icons & Stock Photos",
+    dateAdded: "2026-10-30",
+    logo: ""
+  },
+  {
     title: "Unsplash",
     url: "https://unsplash.com",
     description: "Free high-resolution stock photography.",
@@ -703,6 +711,14 @@ const LINKS = [
     description: "Articles on web design, UX, and front-end development.",
     category: "Learning",
     dateAdded: "2026-08-06",
+    logo: ""
+  },
+  {
+    title: "UI Design Tips",
+    url: "https://www.uidesign.tips",
+    description: "Short UI and UX design tips with visual examples and landing page teardowns.",
+    category: "Learning",
+    dateAdded: "2026-10-30",
     logo: ""
   },
   {
