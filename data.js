@@ -783,6 +783,14 @@ const LINKS = [
     dateAdded: "2026-08-31",
     logo: "assets/favicons/runway.png"
   },
+  {
+    title: "Rap Blaze",
+    url: "https://rapblaze.com",
+    description: "Turns one photo into a short AI video of you in a viral rap trend, ready to post with the trend's sound.",
+    category: "AI Video Generation",
+    dateAdded: "2026-11-02",
+    logo: ""
+  },
 
   // ---- Marketing (grouped into subcategories on category.html) ----
   {
