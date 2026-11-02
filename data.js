@@ -67,7 +67,7 @@ const LINKS = [
     description: "AI code editor and agent that turns prompts and ideas into working code.",
     category: "AI Tools",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/cursor.png"
+    logo: "/assets/favicons/cursor.png"
   },
   {
     title: "Google Gemini",
@@ -115,7 +115,7 @@ const LINKS = [
     description: "Directory for discovering and installing skills built for AI agents.",
     category: "AI Tools",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/skills-sh.png"
+    logo: "/assets/favicons/skills-sh.png"
   },
   {
     title: "Supahero",
@@ -123,7 +123,7 @@ const LINKS = [
     description: "Curated library of standout website hero section designs for inspiration.",
     category: "AI Tools",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/supahero.png"
+    logo: "/assets/favicons/supahero.png"
   },
 
   // ---------- Design Inspiration ----------
@@ -157,7 +157,7 @@ const LINKS = [
     description: "Visual bookmarking tool for curating and organizing design inspiration.",
     category: "Design Inspiration",
     dateAdded: "2026-08-23",
-    logo: "assets/favicons/cosmos.png"
+    logo: "/assets/favicons/cosmos.png"
   },
   {
     title: "Dribbble",
@@ -247,7 +247,7 @@ const LINKS = [
     description: "Gives AI coding agents a better eye for design, cutting generic \"AI slop\" for cleaner UIs.",
     category: "AI Design",
     dateAdded: "2026-08-25",
-    logo: "assets/favicons/impeccable.svg"
+    logo: "/assets/favicons/impeccable.svg"
   },
   {
     title: "Napkin.ai",
@@ -271,7 +271,7 @@ const LINKS = [
     description: "Curated library of AI-readable design systems from popular product websites.",
     category: "AI Design",
     dateAdded: "2026-09-06",
-    logo: "assets/favicons/refero-styles.png"
+    logo: "/assets/favicons/refero-styles.png"
   },
   {
     title: "Transitions.dev",
@@ -287,7 +287,7 @@ const LINKS = [
     description: "Design better websites with AI, then track visitor behavior and performance with TypeUI Insights.",
     category: "AI Design",
     dateAdded: "2026-08-26",
-    logo: "assets/favicons/typeui.png"
+    logo: "/assets/favicons/typeui.png"
   },
   {
     title: "UI UX Pro Max",
@@ -295,7 +295,7 @@ const LINKS = [
     description: "Design intelligence skill for AI assistants: UI styles, palettes, and UX guidelines.",
     category: "AI Design",
     dateAdded: "2026-08-25",
-    logo: "assets/favicons/ui-ux-pro-max.svg"
+    logo: "/assets/favicons/ui-ux-pro-max.svg"
   },
 
   // ---------- Website Platforms ----------
@@ -405,7 +405,7 @@ const LINKS = [
     description: "Domain registration and renewals at cost, with no markup or hidden fees.",
     category: "Domains",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/cloudflare-registrar.png"
+    logo: "/assets/favicons/cloudflare-registrar.png"
   },
   {
     title: "Dynadot",
@@ -413,7 +413,7 @@ const LINKS = [
     description: "Domain registration and management with DNS, privacy, and transfer tools.",
     category: "Domains",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/dynadot.png"
+    logo: "/assets/favicons/dynadot.png"
   },
   {
     title: "Namecheap",
@@ -421,7 +421,7 @@ const LINKS = [
     description: "Affordable domain registrar with 24/7 support.",
     category: "Domains",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/namecheap.png"
+    logo: "/assets/favicons/namecheap.png"
   },
   {
     title: "Porkbun",
@@ -529,7 +529,7 @@ const LINKS = [
     description: "Fast color palette generator with export options.",
     category: "Icons & Stock Photos",
     dateAdded: "2026-06-05",
-    logo: "assets/favicons/coolors.png"
+    logo: "/assets/favicons/coolors.png"
   },
   {
     title: "Flaticon",
@@ -553,7 +553,7 @@ const LINKS = [
     description: "Icon library with 50,000+ icons in multiple styles and framework plugins.",
     category: "Icons & Stock Photos",
     dateAdded: "2026-09-01",
-    logo: "assets/favicons/iconsax.png"
+    logo: "/assets/favicons/iconsax.png"
   },
   {
     title: "Its Hover",
@@ -561,7 +561,7 @@ const LINKS = [
     description: "Copy-paste animated icons with smooth hover effects, built for shadcn.",
     category: "Icons & Stock Photos",
     dateAdded: "2026-09-01",
-    logo: "assets/favicons/itshover.png"
+    logo: "/assets/favicons/itshover.png"
   },
   {
     title: "Lucide",
@@ -577,7 +577,7 @@ const LINKS = [
     description: "SVG icon library with smooth morphing animations between icon sets.",
     category: "Icons & Stock Photos",
     dateAdded: "2026-09-01",
-    logo: "assets/favicons/morphicons.png"
+    logo: "/assets/favicons/morphicons.png"
   },
   {
     title: "Shutterstock",
@@ -603,7 +603,7 @@ const LINKS = [
     description: "Curated directory of free fonts for branding, web, and editorial design.",
     category: "Fonts",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/bestfreefonts.png"
+    logo: "/assets/favicons/bestfreefonts.png"
   },
   {
     title: "Fonts In Use",
@@ -627,7 +627,7 @@ const LINKS = [
     description: "Free, open-source web fonts for any project.",
     category: "Fonts",
     dateAdded: "2026-06-25",
-    logo: "assets/favicons/google-fonts.png"
+    logo: "/assets/favicons/google-fonts.png"
   },
 
   // ---------- Productivity & Business ----------
@@ -671,7 +671,7 @@ const LINKS = [
     description: "Official Apple guidance for designing interfaces across its platforms.",
     category: "Learning",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/apple-hig.png"
+    logo: "/assets/favicons/apple-hig.png"
   },
   {
     title: "CSS-Tricks",
@@ -687,7 +687,7 @@ const LINKS = [
     description: "Curated design and UX resources and courses for self-taught designers.",
     category: "Learning",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/degreeless.png"
+    logo: "/assets/favicons/degreeless.png"
   },
   {
     title: "Indie Hackers",
@@ -703,7 +703,7 @@ const LINKS = [
     description: "Free course teaching UI design fundamentals using just HTML and CSS.",
     category: "Learning",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/scrimba.png"
+    logo: "/assets/favicons/scrimba.png"
   },
   {
     title: "Laws of UX",
@@ -711,7 +711,7 @@ const LINKS = [
     description: "UX psychology principles designers can apply when building interfaces.",
     category: "Learning",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/lawsofux.svg"
+    logo: "/assets/favicons/lawsofux.svg"
   },
   {
     title: "Smashing Magazine",
@@ -735,7 +735,7 @@ const LINKS = [
     description: "Interactive courses for learning UX design and product management skills.",
     category: "Learning",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/uxcel.png"
+    logo: "/assets/favicons/uxcel.png"
   },
 
   // ---------- Wallpapers ----------
@@ -755,7 +755,7 @@ const LINKS = [
     description: "Curated marketplace for premium tech, homeware, and lifestyle products.",
     category: "Curated Physical Goods",
     dateAdded: "2026-08-30",
-    logo: "assets/favicons/curated-supply.png"
+    logo: "/assets/favicons/curated-supply.png"
   },
 
   // ---------- AI Video Generation ----------
@@ -765,7 +765,7 @@ const LINKS = [
     description: "AI video, image, and voice generation with cinematic camera controls.",
     category: "AI Video Generation",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/higgsfield.png"
+    logo: "/assets/favicons/higgsfield.png"
   },
   {
     title: "Krea",
@@ -773,7 +773,7 @@ const LINKS = [
     description: "AI creative suite for generating and enhancing images and video.",
     category: "AI Video Generation",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/krea.png"
+    logo: "/assets/favicons/krea.png"
   },
   {
     title: "Runway",
@@ -781,7 +781,7 @@ const LINKS = [
     description: "AI creative suite for generating and editing video, image, and audio content.",
     category: "AI Video Generation",
     dateAdded: "2026-08-31",
-    logo: "assets/favicons/runway.png"
+    logo: "/assets/favicons/runway.png"
   },
   {
     title: "Rap Blaze",
